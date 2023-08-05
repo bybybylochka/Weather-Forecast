@@ -6,3 +6,5 @@ In the developed web application, the main functions that are usually necessary 
 - Obtaining meteorological data: Open-Meteo weather forecast API, Open-Meteo geocoding API, Yandex API.
 - Page layout: HTML, Sass, JS.
 - Logic: JS.
+## Deploy
+This site was built using [Netlify]([https://pages.github.com/](https://64ce64a617e8c446e748a177--weather-forecast-900209.netlify.app/pages/index.html)https://64ce64a617e8c446e748a177--weather-forecast-900209.netlify.app/pages/index.html)
