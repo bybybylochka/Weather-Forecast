@@ -1,0 +1,67 @@
+.main-info{
+  padding: 40px 0 16px;
+}
+
+.current-temperature{
+  display: flex;
+  align-items: end;
+  flex-basis: auto;
+}
+
+.current-temperature_nominal{
+  @include font($size: 11.2rem, $height: 6.4rem);
+}
+
+.current-temperature_nominal_hidden{
+  @include font($size: 5.7rem, $height: 6.4rem);
+}
+
+.current-temperature_real{
+  @include font($size: 1.8rem, $height: 2.4rem);
+}
+
+.current-temperature_real_hidden{
+  @include font($size: 1.6rem, $height: 2.4rem);
+}
+
+.weather-visualization__img{
+  width:107px;
+
+}
+
+.weather-visualization__img_hidden{
+  width:59px;
+}
+
+.weather-visualization{
+  flex-basis: auto;
+}
+
+.weather-visualization__text{
+  @include font($size: 2.2rem, $height: 2.8rem);
+  text-align: center;
+}
+
+.weather-visualization__text_hidden{
+  display: none;
+}
+
+.date-time{
+  @include font($size: 1.8rem, $height: 2.8rem);
+  align-self: center;
+}
+.date-time_hidden{
+  display: none;
+}
+
+.temperature-range{
+  @include font($size: 1.8rem, $height: 2.4rem, $weight: 700);
+  flex-basis: auto;
+}
+.temperature-range_hidden{
+  display: none;
+}
+
+.date-time, .temperature-range{
+  margin-top: 70px;
+}

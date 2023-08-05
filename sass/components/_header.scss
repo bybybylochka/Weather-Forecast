@@ -1,0 +1,22 @@
+.header{
+  background: url("../../resources/images/visualization/background.png") no-repeat center;
+  background-size: auto;
+  border-radius: 0 0 10% 10%;
+  *{
+    color: $color-text-light;
+  }
+  @extend %transition;
+}
+
+.header_hidden{
+  position: sticky;
+  top:0;
+  z-index: 4;
+  background-image: none;
+  background-color: $color-hidden-header;
+  *{
+    color: $color-text-dark;
+  }
+  @extend %transition;
+}
+

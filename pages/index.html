@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="../sass/style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=51f2f8cf-8afe-468c-b6f1-fc3279c88efc&lang=en_US" type="text/javascript"></script>
+    <link rel="stylesheet" href="../resources/Chart.js/Chart.min.css">
+    <script src="../resources/Chart.js/Chart.min.js"></script>
+</head>
+<body>
+<div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="##8a20d5"
+              d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+        </path>
+    </svg>
+</div>
+<header class="header">
+    <div class="wrapper header__wrapper">
+        <div class="search">
+            <label>
+                <input class="search__bar" type="text" value="Minsk">
+            </label>
+            <button class="button button_search"><img class="search__icon" src="../resources/images/search/search.png" alt="loupe"></button>
+        </div>
+        <div class="main-info">
+            <div class="layout-2-columns">
+                <div class="current-temperature">
+                    <p class="current-temperature_nominal"></p>
+                    <p class="current-temperature_real">Feels like 1&deg;</p>
+                </div>
+                <div class="weather-visualization">
+                    <img class="weather-visualization__img" alt="visualization">
+                    <p class="weather-visualization__text">Cloudy</p>
+                </div>
+                <p class="date-time">July 17, 21:38</p>
+                <p class="temperature-range">Day 3&deg;<br>Night 1&deg;</p>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="wrapper main__wrapper">
+        <nav class="navigation">
+            <div class="layout-3-columns">
+                <button class="button button_not-colored" id="today" autofocus>Today</button>
+                <button class="button button_not-colored" id="tomorrow">Tomorrow</button>
+                <button class="button button_not-colored" id="14-days">14 days</button>
+            </div>
+        </nav>
+        <div class="detailed-info">
+            <div class="layout-2-columns">
+                <div class="detailed-info__item wind">
+                    <img class="info__img" src="../resources/images/additional-info-icons/wind.png" alt="wind">
+                    <p class="info__title">Wind speed</p>
+                    <p class="info__content">12 km/h</p>
+                </div>
+                <div class="detailed-info__item rain">
+                    <img class="info__img" src="../resources/images/additional-info-icons/rainy.png" alt="rain">
+                    <p class="info__title">Rain chance</p>
+                    <p class="info__content">24%</p>
+                </div>
+                <div class="detailed-info__item pressure">
+                    <img class="info__img" src="../resources/images/additional-info-icons/waves.png" alt="waves">
+                    <p class="info__title">Pressure</p>
+                    <p class="info__content">720 hpa</p>
+                </div>
+                <div class="detailed-info__item UV">
+                    <img class="info__img" src="../resources/images/additional-info-icons/light_mode.png" alt="sun">
+                    <p class="info__title">UV Index</p>
+                    <p class="info__content">2,3</p>
+                </div>
+            </div>
+            <div class="detailed-info__item hourly-forecast">
+                <img class="info__img" src="../resources/images/additional-info-icons/hours.png" alt="hours">
+                <p class="info__title">Hourly forecast</p>
+                <div class="info__content">
+                </div>
+            </div>
+            <div class="detailed-info__item day-forecast">
+                <img class="info__img" src="../resources/images/additional-info-icons/calendar.png" alt="calendar">
+                <p class="info__title">Day forecast</p>
+                <div class="info__diagram">
+
+                </div>
+            </div>
+            <div class="detailed-info__item chance-of-rain">
+                <img class="info__img" src="../resources/images/additional-info-icons/rainy.png" alt="rain">
+                <p class="info__title">Chance of rain</p>
+                <div class="info__diagram">
+                </div>
+            </div>
+            <div class="layout-2-columns">
+                <div class="detailed-info__item sunrise">
+                    <img class="info__img" src="../resources/images/additional-info-icons/sunrise.png" alt="sunrise">
+                    <p class="info__title">Sunrise</p>
+                    <p class="info__content">4:20 AM</p>
+                </div>
+                <div class="detailed-info__item sunset">
+                    <img class="info__img" src="../resources/images/additional-info-icons/sunset.png" alt="sunset">
+                    <p class="info__title">Sunset</p>
+                    <p class="info__content">9:30 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="days-forecast">
+            <div class="day-forecast template" >
+                <div class="day-forecast__main-info">
+                    <p class="date-time">Today</p>
+                    <p class="weather-visualization__text">Cloudy</p>
+                    <p class="temperature-range">3&deg;<br>1&deg;</p>
+                    <img class="weather-visualization__img" alt="visualization" src="../resources/images/visualization/cloub.png">
+                    <button class="button button_arrow">
+                        <img class="arrow-icon" alt="arrow" src="../resources/images/additional-info-icons/arrow.png">
+                    </button>
+                </div>
+                <div class="day-forecast__additional-info">
+                    <div class="layout-2-columns">
+                        <div class="detailed-info__item wind detailed-info__item_colored">
+                            <img class="info__img" src="../resources/images/additional-info-icons/wind.png" alt="wind">
+                            <p class="info__title">Wind speed</p>
+                            <p class="info__content"></p>
+                        </div>
+                        <div class="detailed-info__item rain detailed-info__item_colored">
+                            <img class="info__img" src="../resources/images/additional-info-icons/rainy.png" alt="rain">
+                            <p class="info__title">Rain chance</p>
+                            <p class="info__content"></p>
+                        </div>
+                        <div class="detailed-info__item sunrise detailed-info__item_colored">
+                            <img class="info__img" src="../resources/images/additional-info-icons/sunrise.png" alt="sunrise">
+                            <p class="info__title">Sunrise</p>
+                            <p class="info__content"></p>
+                        </div>
+                        <div class="detailed-info__item sunset detailed-info__item_colored">
+                            <img class="info__img" src="../resources/images/additional-info-icons/sunset.png" alt="sunset">
+                            <p class="info__title">Sunset</p>
+                            <p class="info__content"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../animation/diagrams.js"></script>
+<script src="../animation/accordion.js"></script>
+<script src="../logic/API-consuming.js" id="API"></script>
+<script src="../animation/header.js"></script>
+<script src="../animation/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.button{
+  padding:9px 0;
+  @include font($size:1.6rem, $height:2.4rem);
+  cursor: pointer;
+  transition: all .3s;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:$color-text-dark;
+  @extend %transition;
+  &_search{
+    background-color: transparent;
+    @include font($size:1.8rem, $height:2.6rem, $weight:500);
+    padding: 0;
+  }
+  &_not-colored{
+    background: $color-button-not-colored;
+    border-radius: 14px;
+    //&:focus{
+    //  background: $color-button-colored;
+    //}
+  }
+  &_arrow{
+    background-color: transparent;
+    @include font($size:1.8rem, $height:2.6rem, $weight:500);
+    padding: 0;
+  }
+}
+.arrow-icon{
+  width: 16px;
+  padding: 8px 6px;
+  background-color: $color-text-light;
+  border-radius: 50%;
+}

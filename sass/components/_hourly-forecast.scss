@@ -1,0 +1,36 @@
+.hourly-forecast .info__content{
+  display: flex;
+  width: 352px;
+  height: 85px;
+  p{
+    text-align: center;
+  }
+  gap:30px;
+  overflow: auto;
+  &::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+  }
+}
+.hourly-forecast__img{
+  height: 32px;
+}
+.hourly-forecast__time{
+  @include font($size:1.4rem, $height:1.8rem);
+  white-space: nowrap;
+}
+.hourly-forecast__temperature{
+  @include font($size:1.8rem, $height:1.8rem);
+}
+.detailed-info__item.hourly-forecast{
+  display: grid;
+  grid-template-areas:
+    "img title"
+    "content content";
+  grid-template-columns: auto 310px;
+  gap: 12px;
+}
+
+.hourly-forecast__item{
+
+}

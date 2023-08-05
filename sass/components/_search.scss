@@ -1,0 +1,16 @@
+.search{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.search__bar{
+  background: transparent;
+  border: none;
+  @include font($size: 2.2rem, $height: 2.8rem);
+  &:focus{
+    border: none;
+    outline: 0;
+    border-bottom: 2px solid $color-text-light;
+  }
+}

@@ -1,0 +1,6 @@
+.navigation .button:focus{
+    @extend %transition;
+}
+.selected{
+    background: $color-button-colored;
+}
